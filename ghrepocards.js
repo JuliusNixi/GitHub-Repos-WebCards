@@ -1,4 +1,4 @@
-async function processGHRepoCards() {
+async function processGHRepoCards(ENABLE_CACHING) {
 
     const GITHUB_API_SETTINGS_GHREPOCARDS = {
         method: 'GET',
@@ -9,8 +9,29 @@ async function processGHRepoCards() {
     };
     
     const GITHUB_API_ENDPOINT_GHREPOCARDS = "https://api.github.com/";
+
+    // Null as arg to clear all.
+    function clearDataLocal(repoName) {
+        if (!ENABLE_CACHING) return;
+        let l = localStorage.length;
+        for (let i = 0; i < l; i++) {
+            const key = localStorage.key(i);
+            const value = localStorage.getItem(key);
+            try {
+                const parsedValue = JSON.parse(value);
+                if (parsedValue && typeof parsedValue === 'object') {
+                    if (parsedValue.expiry && parsedValue.repoData && (repoName === null || repoName === parsedValue.repoData.name))
+                        localStorage.removeItem(key);
+                }
+            } catch (error) {
+                localStorage.removeItem(key);
+                throw new Error(`Error in clearDataLocal(): ${error}.`);
+            }
+        }
+    }
     
     function saveDataLocal(repoData) {
+        if (!ENABLE_CACHING) return;
         const now = new Date();
         let expirationHours = 1;
         const item = {
@@ -23,6 +44,7 @@ async function processGHRepoCards() {
     
     function getDataLocal() {
         const items = {};
+        if (!ENABLE_CACHING) return items;
         let l = localStorage.length;
         for (let i = 0; i < l; i++) {
             const key = localStorage.key(i);
@@ -251,14 +273,14 @@ async function processGHRepoCards() {
         cardTag.style.display = "block";
     }
 
+    // Export functions to call it directly outside if needed.
     processGHRepoCards.saveDataLocal = saveDataLocal;
     processGHRepoCards.getDataLocal = getDataLocal;
     processGHRepoCards.putData = putData;
     processGHRepoCards.getData = getData;
     processGHRepoCards.getAllRepos = getAllRepos;
     processGHRepoCards.getSingleRepo = getSingleRepo;
+    processGHRepoCards.clearDataLocal = clearDataLocal;
 
 }
-
-processGHRepoCards();
 
