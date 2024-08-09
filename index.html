@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GitHub-Repo-WebCards Demo</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        ul {
+            display: inline-block;
+            text-align: left;
+        }
+        .hr-big {
+            height: 4px;
+            background-color: black;
+        }
+        .hr-small {
+            height: 2px;
+            background-color: blue;
+            width: 20vw;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>This is just an example of how GitHub-Repo-WebCards works (demo).</h1>
+
+    <h2>Single repo's data:</h2>
+
+    <gh-repo-cards style="display: none;" data-user="JULIUSNIXI" data-repo="bOgGle">
+
+        <div class="gh-repo-cards-div">
+
+            <h3>Repo's data:</h3>
+            <p class="gh-repo-cards-name">Repo's name: </p>
+            <p class="gh-repo-cards-description">Repo's description: </p>
+
+        </div>
+
+    </gh-repo-cards>
+
+    <br /> <br />
+    <hr class="hr-big" />
+    <br /> <br />
+
+    <h2>Single repo's data:</h2>
+
+    <gh-repo-cards style="display: none;" data-user="withastro" data-repo="astro">
+        
+        <div class="gh-repo-cards-div">
+    
+            <h3>Owner's data:</h3>
+            <img width="50px" height="50px" class="gh-repo-cards-avatar" />
+            <p class="gh-repo-cards-username">Owner's username: </p>
+    
+            <h3>Repo's data:</h3>
+            <p class="gh-repo-cards-name">Repo's name: </p>
+            <p class="gh-repo-cards-description">Repo's description: </p>
+            <ul class="gh-repo-cards-topics">Repo's topics: </ul>
+            <ul class="gh-repo-cards-languages">Repo's languages: </ul>
+            <p class="gh-repo-cards-stars">Repo's stars: </p>
+            <p class="gh-repo-cards-watchers">Repo's watchers: </p>
+            <p class="gh-repo-cards-updatedat">Repo updated at: </p>
+            <p class="gh-repo-cards-forks">Repo's forks: </p>
+    
+        </div>
+    
+    </gh-repo-cards>
+
+    <br /> <br />
+    <hr class="hr-big" />
+    <br /> <br />
+
+    <h2>Bulk (all) repo's data:</h2>
+
+    <gh-repo-cards style="display: none;" data-user="JuliusNixi" data-repo="%all" data-sort="created" data-direction="desc">
+        
+        <div class="gh-repo-cards-div">
+    
+            <h3>Owner's data:</h3>
+            <img width="50px" height="50px" class="gh-repo-cards-avatar" />
+            <p class="gh-repo-cards-username">Owner's username: </p>
+    
+            <h3>Repo's data:</h3>
+            <p class="gh-repo-cards-name">Repo's name: </p>
+            <p class="gh-repo-cards-description">Repo's description: </p>
+            <ul class="gh-repo-cards-topics">Repo's topics: </ul>
+            <ul class="gh-repo-cards-languages">Repo's languages: </ul>
+            <p class="gh-repo-cards-stars">Repo's stars: </p>
+            <p class="gh-repo-cards-watchers">Repo's watchers: </p>
+            <p class="gh-repo-cards-updatedat">Repo updated at: </p>
+            <p class="gh-repo-cards-forks">Repo's forks: </p>
+
+            <hr class="hr-small" />
+    
+        </div>
+    
+    </gh-repo-cards>
+    
+</body>
+
+    <script src="ghrepocards.js"></script>
+
+</html>
+
