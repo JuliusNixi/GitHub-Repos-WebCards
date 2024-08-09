@@ -1,3 +1,4 @@
+/* GitHub Repo WebCards v1.0.1 */
 async function processGHRepoCards(ENABLE_CACHING) {
 
     const GITHUB_API_SETTINGS_GHREPOCARDS = {
