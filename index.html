@@ -22,13 +22,17 @@
             background-color: blue;
             width: 20vw;
         }
+        p {
+            padding-left: 30vw;
+            padding-right: 30vw;
+        }
     </style>
 </head>
 <body>
 
     <h1>This is just an example of how GitHub-Repo-WebCards works (demo).</h1>
 
-    <h2>Single repo's data:</h2>
+    <h2>Single repo's data...</h2>
 
     <gh-repo-cards style="display: none;" data-user="JULIUSNIXI" data-repo="bOgGle">
 
@@ -46,7 +50,7 @@
     <hr class="hr-big" />
     <br /> <br />
 
-    <h2>Single repo's data:</h2>
+    <h2>Single repo's data...</h2>
 
     <gh-repo-cards style="display: none;" data-user="withastro" data-repo="astro">
         
@@ -74,7 +78,7 @@
     <hr class="hr-big" />
     <br /> <br />
 
-    <h2>Bulk (all) repo's data:</h2>
+    <h2>Bulk (all) repo's data...</h2>
 
     <gh-repo-cards style="display: none;" data-user="JuliusNixi" data-repo="%all" data-sort="created" data-direction="desc">
         
@@ -102,10 +106,11 @@
     
 </body>
 
-    <script src="https://cdn.jsdelivr.net/gh/juliusnixi/GitHub-Repo-WebCards@1.0.0/ghrepocards.js"></script>
-    <script>
-        processGHRepoCards(true);
-    </script>
+   <script src="https://cdn.jsdelivr.net/gh/juliusnixi/GitHub-Repo-WebCards@2.0.0/ghrepocards.js"></script>
+   <script>
+        console.log("GitHub-Repo-WebCards: Project functions API example:")
+        GHRepoCardsInit(true).then(result => result.getData(`users/octocat/followers`).then(e => console.log(e)));
+   </script>
 
 </html>
 
