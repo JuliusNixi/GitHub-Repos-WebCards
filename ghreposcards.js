@@ -1,4 +1,4 @@
-const GHRepoCardsInit = (() => {
+var GHRepoCardsInit = (() => {
 
     async function processGHRepoCards(ENABLE_CACHING) {
 
