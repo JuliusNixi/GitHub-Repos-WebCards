@@ -8,7 +8,7 @@ During the development of my new static (without backend) blog/website, I wanted
 Sincerely no, it's not something of unique and special. Is simply a wrapper of the GitHub's APIs and doesn't add anything to them. However, I think it can be common to want to pull data from GitHub, for example in developer portfolios. It is, of course, possible to make all the desired requests manually from scratch, but this requires some effort and tedium. This project hopes to provide something, while simple, that is workable and provides a stable baseline allowing you to not reinvent the wheel if you only want some basic repo statistics. **It is not meant for complex projects that require sophisticated interactions with GitHub's APIs.**
 
 ## Demo
-A demo is avaible [here](https://juliusnixi.github.io/GitHub-Repos-WebCards/). It's the 'index.html' this repo file hosted on GitHub pages.
+A demo is avaible [here](https://juliusnixi.github.io/GitHub-Repos-WebCards/). The 'index.html' showed is this repo file hosted on GitHub pages.
 
 ## Styles and frameworks agnostic
 A key concept of the project is the style and framework agnosticism. In fact, I want anyone to be able to take the data and decide what style to use with them and on what frontend framework. In the future, could be added some default themes, but freedom from styling and tech stack will always be central.
@@ -17,7 +17,7 @@ A key concept of the project is the style and framework agnosticism. In fact, I 
 The GitHub's APIs could be used with or without authentication. In the second case, how you can [see](https://docs.github.com/en/rest/using-the-rest-api/rate-limits-for-the-rest-api?apiVersion=2022-11-28), the requests are limited to 60/hour per public IP. Since this script is vanilla javascript that runs on the client, in the first case, the GitHub's APIs personal auth token would be exposed and this could be dangerous and cannot be avoided. To solve this problem a backend solution must be implemented. However, as said before, the idea was to stay more general and simply as possible on the client side, so no GitHub's APIs auth is used, but to prevent to easy hit the rate limit a caching system is present.
 
 ## Caching
-The script (to prevent GitHub's API's rate limit, read above) has a caching system. Its use is optional but strongly recommended, because without it, with a little use of this script and a few page reloads from the website viewer, it is easy to suffer the limitation of the GitHub's APIs and fail to get and show the data to the website viewer.
+The script (to prevent GitHub's API's rate limit, read above) has a caching system. Its use is optional but strongly recommended, because without it, with some use of this script and a few page reloads from the website viewer, it is easy to suffer the limitation of the GitHub's APIs and fail to get and show the data to the website viewer. With the cache system enabled all the data received about a repository (and the respository's name), as a response to a request, are saved in the local storage. When a new request about the specified same repository is made again, the data are served from the internal cache, without querying again the GitHub's APIs. The cache has an expiration date, to keep the informations updated.
 
 ## Installation
 Two possibility:
@@ -72,7 +72,7 @@ The `data-sort="created"` and the `data-direction="desc"` attributes are used on
 ## General explaination for both modes
 * The data will be injected in every `<gh-repos-cards>`.
 * The `style="display: none;"` is optional, but recommended, it will automatically removed from this script after the data injection to prevent showing empty html structure to the website viewer during the data download. So **don't use inline CSS on this tag**.
-* In each `<gh-repos-cards>` exactly 1 `<div>` with at least the `gh-repos-cards-div` class must be present, otherwise an error is throw. All the html strcture to contain the desired data must be in this div, otherwise their won't be filled.
+* In each `<gh-repos-cards>` exactly 1 `<div>` with at least the `gh-repos-cards-div` class must be present, otherwise an error is throw. All the html strcture to contain the desired data (see below) must be in this div, otherwise their won't be filled.
 * The `data-user` and `data-repo` attributes in the `<gh-repos-cards>` must be present and setted respectively to the desired GitHub repository owner and to his repository's name.
 
 ## Usage
@@ -92,7 +92,7 @@ Wherever and whenever you want simply call the javascript function `GHRepoCardsI
 <p class="gh-repos-cards-updatedat">Repo updated at: </p>
 <p class="gh-repos-cards-forks">Repo's forks: </p>
 ```
-Put the desired html data structure inside the `gh-repos-cards-div`.
+Put the desired html data structure (choosing from the above list) inside the `gh-repos-cards-div`. The Topics and the Languages are injected inside the `<ul>` as `<li>`.
 
 ## Basic APIs
 The functions that compose the script are also avaible as APIs to be called outside the script to allow you to take advantage of them if you need to develop your own custom features. However, if you think these might be useful to everyone you might consider collaborating directly on this repo. To use them see this example:
